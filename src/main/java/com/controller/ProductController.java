@@ -38,9 +38,9 @@ public class ProductController {
 	}
 	
 	
-	@GetMapping("/getbyproducts/{categoryId}")
-	public List<Product> getByProducts(@PathVariable int categoryId) {
-		return ps.getByProducts(categoryId);
+	@GetMapping("/getbyproducts/{productCategory}")
+	public List<Product> getByProducts(@PathVariable String productCategory) {
+		return ps.getByProducts(productCategory);
 	}
 	
 }

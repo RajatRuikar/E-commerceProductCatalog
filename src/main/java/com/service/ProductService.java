@@ -11,6 +11,6 @@ public interface ProductService {
 	
 	public Product removerProduct(int id);
 	
-	public List<Product> getByProducts(int categoryId);
+	public List<Product> getByProducts(String productCategory);
 	
 }

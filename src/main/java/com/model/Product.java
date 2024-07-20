@@ -4,10 +4,13 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import jakarta.persistence.UniqueConstraint;
 
 @Entity
+@Table(
+		uniqueConstraints = @UniqueConstraint(columnName = )
+		)
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,21 +18,20 @@ public class Product {
 	private String productName;
 	private float productPrice;
 	private float productRating;
+	private String productCategory;
 
-	@ManyToOne
-	@JoinColumn(name = "category_id")
-	private Category category;
-	
 	public Product() {
 		super();
 	}
 
-	public Product(int productId, String productName, float productPrice, float productRating) {
+	public Product(int productId, String productName, float productPrice, float productRating, String productCategory,
+			Category category) {
 		super();
 		this.productId = productId;
 		this.productName = productName;
 		this.productPrice = productPrice;
 		this.productRating = productRating;
+		this.productCategory = productCategory;
 	}
 
 	public int getProductId() {
@@ -62,6 +64,14 @@ public class Product {
 
 	public void setProductRating(float productRating) {
 		this.productRating = productRating;
+	}
+
+	public String getProductCategory() {
+		return productCategory;
+	}
+
+	public void setProductCategory(String productCategory) {
+		this.productCategory = productCategory;
 	}
 
 }
